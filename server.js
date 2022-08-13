@@ -9,10 +9,9 @@ serveHTTP(addonInterface, { port: PORT })
     scrapeSubs()
     connect().then((uri) => {
         console.log(`MONGO URI: ${uri}`)
-        scrapeSubs()
-        schedule.scheduleJob('* * 3 * * ', function(){
+        schedule.scheduleJob('* */15 * * * ', function(){
+            scrapeSubs()
             console.log('Scraper started');
-//            scrapeSubs()
           });
     }).catch(console.error)
 })
